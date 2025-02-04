@@ -1,0 +1,102 @@
+/* Estilos generales */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Secciones */
+.section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 30%;
+  min-width: 280px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+}
+
+h3 {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+/* Estilo para mecánicos y herramientas */
+.mechanic, .tool {
+  display: inline-block;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mechanic:hover, .tool:hover {
+  background: #e9ecef;
+  transform: scale(1.05);
+}
+
+.mechanic img, .tool img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Botones */
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+  margin: 5px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Campo de fecha */
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .section {
+      width: 90%;
+  }
+}

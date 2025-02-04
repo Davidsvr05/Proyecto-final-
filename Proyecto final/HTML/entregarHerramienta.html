@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Herramientas</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { display: flex; gap: 20px; }
+        .section { border: 1px solid #000; padding: 10px; width: 30%; }
+        .mechanic, .tool { cursor: pointer; text-align: center; margin: 5px; }
+        .mechanic img, .tool img { width: 80px; height: 80px; display: block; margin: auto; }
+    </style>
+    <link rel="stylesheet" href="/CSS/entregarHerramienta.css">
+</head>
+<body>
+    
+    <div id="navbar"></div>
+
+    <h2>Gestión de Herramientas</h2>
+
+    <div class="container">
+        <!-- Sección de Mecánicos -->
+        <div class="section">
+            <h3>Mecánicos</h3>
+            <div id="mechanicList"></div>
+        </div>
+
+        <!-- Sección de Herramientas -->
+        <div class="section">
+            <h3>Herramientas</h3>
+            <div id="toolList"></div>
+        </div>
+
+        <!-- Sección de Registro -->
+        <div class="section">
+            <h3>Registro</h3>
+            <p><strong>Mecánico:</strong> <span id="selectedMechanic">N/A</span></p>
+            <p><strong>Herramienta:</strong> <span id="selectedTool">N/A</span></p>
+            <input type="datetime-local" id="dateTime">
+            <button onclick="registerAction('entrega')">ENTREGA</button>
+            <button onclick="registerAction('recibe')">RECIBE</button>
+        </div>
+    </div>
+
+    
+
+
+
+    <script>
+
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+
+        // Simulación de datos en localStorage (ejecutar solo la primera vez)
+        if (!localStorage.getItem("mechanics")) {
+            const mechanics = [
+                { id: 1, name: "Juan", img: "mecanico1.jpg" },
+                { id: 2, name: "Pedro", img: "mecanico2.jpg" },
+                { id: 3, name: "Luis", img: "mecanico3.jpg" }
+            ];
+            localStorage.setItem("mechanics", JSON.stringify(mechanics));
+        }
+        
+        if (!localStorage.getItem("tools")) {
+            const tools = [
+                { id: 1, name: "Llave Inglesa", img: "llave.jpg" },
+                { id: 2, name: "Destornillador", img: "destornillador.jpg" },
+                { id: 3, name: "Martillo", img: "martillo.jpg" }
+            ];
+            localStorage.setItem("tools", JSON.stringify(tools));
+        }
+
+        // Cargar mecánicos en la vista
+        function loadMechanics() {
+            const mechanics = JSON.parse(localStorage.getItem("mechanics"));
+            const mechanicList = document.getElementById("mechanicList");
+            mechanicList.innerHTML = "";
+            mechanics.forEach(mechanic => {
+                const div = document.createElement("div");
+                div.className = "mechanic";
+                div.innerHTML = `<img src="${mechanic.img}" alt="${mechanic.name}"><p>${mechanic.name}</p>`;
+                div.onclick = () => selectMechanic(mechanic.name);
+                mechanicList.appendChild(div);
+            });
+        }
+
+        // Cargar herramientas en la vista
+        function loadTools() {
+            const tools = JSON.parse(localStorage.getItem("tools"));
+            const toolList = document.getElementById("toolList");
+            toolList.innerHTML = "";
+            tools.forEach(tool => {
+                const div = document.createElement("div");
+                div.className = "tool";
+                div.innerHTML = `<img src="${tool.img}" alt="${tool.name}"><p>${tool.name}</p>`;
+                div.onclick = () => selectTool(tool.name);
+                toolList.appendChild(div);
+            });
+        }
+
+        // Seleccionar mecánico
+        function selectMechanic(name) {
+            document.getElementById("selectedMechanic").textContent = name;
+            loadTools(); // Cargar herramientas al seleccionar mecánico
+        }
+
+        // Seleccionar herramienta
+        function selectTool(name) {
+            document.getElementById("selectedTool").textContent = name;
+        }
+
+        // Registrar acción de entrega o recepción
+        function registerAction(action) {
+            const mechanic = document.getElementById("selectedMechanic").textContent;
+            const tool = document.getElementById("selectedTool").textContent;
+            const dateTime = document.getElementById("dateTime").value;
+
+            if (mechanic === "N/A" || tool === "N/A" || dateTime === "") {
+                alert("Seleccione mecánico, herramienta y fecha/hora.");
+                return;
+            }
+
+            alert(`${mechanic} ${action === 'entrega' ? 'entregó' : 'recibió'} la herramienta ${tool} el ${dateTime}`);
+        }
+
+        // Cargar los datos iniciales
+        loadMechanics();
+    </script>
+
+
+</body>
+</html>
