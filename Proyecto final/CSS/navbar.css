@@ -1,4 +1,4 @@
-/* /CSS/menu.css */
+/* Estilos generales */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -6,13 +6,14 @@ body {
   background-color: #f4f4f4;
 }
 
+/* Navbar */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c3e50; /* Color de fondo más moderno */
+  background-color: #ffdad6;
   padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -24,31 +25,64 @@ nav ul {
 
 nav ul li {
   margin: 0 15px;
+  position: relative;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  padding: 10px 15px; /* Más padding para un mejor aspecto */
+  padding: 10px 15px;
   transition: all 0.3s ease;
-  border-radius: 8px; /* Bordes redondeados */
-  background-color: #34495e; /* Fondo para cada enlace */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para los enlaces */
-  display: inline-block; /* Para que el padding funcione correctamente */
+  border-radius: 8px;
+  background-color: #b89789;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: inline-block;
 }
 
 nav ul li a:hover {
-  background-color: #1abc9c; /* Color de hover más llamativo */
-  transform: translateY(-2px); /* Efecto de levantar */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hover */
+  background-color: #ef5e1b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.logo img {
-  height: 50px;
-  border-radius: 8px; /* Bordes redondeados para el logo */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para el logo */
+/* Dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 220px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #ddd;
 }
 
+.dropdown-content a {
+  color: #444;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  font-weight: bold;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffdad6;
+  color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -65,11 +99,7 @@ nav ul li a:hover {
   }
 
   nav ul li a {
-    width: 100%; /* Ocupar todo el ancho en móviles */
-    text-align: center; /* Centrar el texto */
-  }
-
-  .logo {
-    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
   }
 }
