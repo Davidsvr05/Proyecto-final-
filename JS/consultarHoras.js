@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const historialTabla = document.getElementById("historialTabla").getElementsByTagName("tbody")[0];
   const filtroOrden = document.getElementById("filtroOrden");
+  const totalHorasTrabajadasDiv = document.getElementById("totalHorasTrabajadas");
 
   cargarHistorial();
   cargarOrdenes();
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ordenes = JSON.parse(localStorage.getItem("ordenes")) || [];
     const filtro = filtroOrden.value;
     historialTabla.innerHTML = "";
+    let totalHoras = 0;
 
     historial.forEach(registro => {
       if (filtro === "" || registro.orden === filtro) {
@@ -19,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const director = orden ? orden.director : "N/A";
         const horaDevolucion = registro.fechaDevolucion || "N/A";
         const horasTrabajadas = registro.fechaDevolucion ? calcularHorasTrabajadas(registro.fechaEntrega, registro.fechaDevolucion) : "N/A";
+
+        if (horasTrabajadas !== "N/A") {
+          totalHoras += parseFloat(horasTrabajadas);
+        }
 
         const row = historialTabla.insertRow();
 
@@ -39,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
         horasTrabajadasCell.textContent = horasTrabajadas;
       }
     });
+
+    totalHorasTrabajadasDiv.textContent = `Total de horas trabajadas: ${totalHoras.toFixed(2)}`;
   }
 
   function cargarOrdenes() {

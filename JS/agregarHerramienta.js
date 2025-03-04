@@ -6,7 +6,7 @@ cargarHerramientas();
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-o
+    
     const modulo = document.getElementById("modulo").value;
     const nombre = document.getElementById("nombre").value;
     const id = document.getElementById("id").value;

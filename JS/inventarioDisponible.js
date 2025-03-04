@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const idCell = row.insertCell(1);
       const estadoCell = row.insertCell(2);
       const personaCell = row.insertCell(3);
-      const idPersonaCell = row.insertCell(4);
-      const moduloCell = row.insertCell(5);
+      const moduloCell = row.insertCell(4);
 
       nombreCell.textContent = herramienta.nombre;
       idCell.textContent = herramienta.id;
@@ -33,10 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (herramienta.estado === "No disponible") {
         personaCell.textContent = herramienta.mecanico || "N/A";
-        idPersonaCell.textContent = herramienta.mecanicoId || "N/A";
       } else {
         personaCell.textContent = "N/A";
-        idPersonaCell.textContent = "N/A";
       }
 
       moduloCell.textContent = herramienta.modulo || "N/A";

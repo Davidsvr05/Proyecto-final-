@@ -70,10 +70,26 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       card.querySelector(".eliminar-btn").addEventListener("click", () => {
-          eliminarModulo(modulo.id);
+          confirmarEliminacion(modulo.id);
       });
 
       modulosList.appendChild(card);
+  }
+
+  function confirmarEliminacion(id) {
+      Swal.fire({
+          title: "¿Estás seguro?",
+          text: "No podrás revertir esto.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Sí, eliminarlo"
+      }).then((result) => {
+          if (result.isConfirmed) {
+              eliminarModulo(id);
+          }
+      });
   }
 
   function eliminarModulo(id) {
