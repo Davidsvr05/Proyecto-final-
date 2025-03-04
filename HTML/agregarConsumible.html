@@ -7,13 +7,8 @@
   <link rel="stylesheet" href="/CSS/agregarConsumible.css">
 </head>
 <body>
-  <!-- Navbar -->
   <div id="navbar"></div>
-
-  <!-- Contenedor Principal -->
   <div class="container">
-    
-    <!-- Sección Izquierda: Formulario -->
     <div class="form-container">
       <h2>Agregar consumible</h2>
       <form id="agregarConsumibleForm">
@@ -30,11 +25,6 @@
           <label for="modulo">Modulo:</label>
           <select id="modulo" name="modulo" required>
             <option value="" disabled selected>Seleccione un módulo</option>
-            <option value="1">1 - llaves</option>
-            <option value="2">2 - Herramienta de corte</option>
-            <option value="3">3 - Herramienta de medición</option>
-            <option value="4">4 - brocas</option>
-
           </select>
         </div>
         <div>
@@ -62,15 +52,12 @@
         </div>
       </form>
     </div>
-
-    <!-- Sección Derecha: Vista de consumibles Agregados -->
     <div class="view-container">
       <h2>Consumibles Agregados</h2>
       <div id="consumibles-list">
         <p>No hay consumibles agregados aún.</p>
       </div>
     </div>
-
   </div>
 
   <script>
@@ -79,8 +66,20 @@
         .then(data => {
             document.getElementById('navbar').innerHTML = data;
         });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const moduloSelect = document.getElementById("modulo");
+      const modulos = JSON.parse(localStorage.getItem("modulos")) || [];
+
+      modulos.forEach(modulo => {
+        const option = document.createElement("option");
+        option.value = modulo.id;
+        option.textContent = `${modulo.id} - ${modulo.nombre}`;
+        moduloSelect.appendChild(option);
+      });
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/Proyecto final/JS/agregarConsumible.js"></script>
+  <script src="/JS/agregarConsumible.js"></script>
 </body>
 </html>

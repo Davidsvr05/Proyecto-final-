@@ -98,13 +98,13 @@ button:hover {
   color: #2c3e50;
 }
 
-#personas-list {
+#Modulos-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.persona-card {
+.modulo-card {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -113,21 +113,13 @@ button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.persona-card img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
-}
-
-.persona-card h3 {
+.modulo-card h3 {
   margin: 5px;
   font-size: 18px;
   color: #2c3e50;
 }
 
-.persona-card p {
+.modulo-card p {
   margin: 5px;
   font-size: 14px;
   color: #555;
@@ -143,13 +135,13 @@ button:hover {
     width: 100%;
   }
 
-  .persona-card {
+  .modulo-card {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .persona-card img {
+  .modulo-card img {
     margin-bottom: 10px;
   }
 }

@@ -73,7 +73,7 @@ function guardarPersona(persona) {
 
 function cargarPersonas() {
     const personas = JSON.parse(localStorage.getItem("personas")) || [];
-    personasList.innerHTML = ""; // Limpiar lista
+    personasList.innerHTML = "";  
 
     if (personas.length === 0) {
         personasList.innerHTML = "<p>No hay personas agregadas aún.</p>";

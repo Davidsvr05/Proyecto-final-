@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Agregar Herrramienta</title>
+  <link rel="stylesheet" href="/CSS/ordenTrabajo.css">
 </head>
 <body>
   <div id="navbar"></div>
-  <div>
-    prueba1
+  <div class="container">
+    <div class="form-container">
+      <h2>Agregar Orden</h2>
+      <form id="agregarOrdenForm">
+        
+        <div>
+          <label for="nombre">Empresa:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+          <label for="id">Numero de Orden:</label>
+          <input type="text" id="id" name="id" required>
+        </div>
+        <div>
+          <label for="Director">Director Encargado:</label>
+          <input type="text" id="director" name="director" required>
+        </div>
+        <div>
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+    <div class="view-container">
+      <h2>Ordenes Agregadas</h2>
+      <div id="ordenes-list">
+        <p>No hay herramientas agregadas aún.</p>
+      </div>
+    </div>
+
   </div>
+
   <script>
     fetch('navbar.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('navbar').innerHTML = data;
         });
-</script>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/JS/ordenTrabajo.js"></script>
 </body>
 </html>

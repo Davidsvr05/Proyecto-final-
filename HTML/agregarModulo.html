@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Agregar Modulo</title>
+  <link rel="stylesheet" href="/CSS/agregarModulo.css">
 </head>
 <body>
   <div id="navbar"></div>
-  <div>
-    prueba3
+  <div class="container">
+    <div class="form-container">
+      <h2>Agregar Modulo</h2>
+      <form id="agregarModuloForm">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+          <label for="id">ID:</label>
+          <input type="text" id="id" name="id" required>
+        </div>
+        <div>
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+    <div class="view-container">
+      <h2>Modulos Agregados</h2>
+      <div id="Modulos-list">
+        <p>No hay Modulos agregados aún.</p>
+      </div>
+    </div>
+
   </div>
+
   <script>
     fetch('navbar.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('navbar').innerHTML = data;
         });
-</script>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/JS/agregarModulo.js"></script>
 </body>
 </html>
